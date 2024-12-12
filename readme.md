@@ -108,9 +108,8 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 - Perform synthesis for the **PicoRV32A** design.  
 - From the synthesis output, calculate the **Flop Ratio**, which is defined as:  
 
-\[
-\text{Flop Ratio} = \frac{\text{Number of D Flip-Flops}}{\text{Total Number of Cells}}
-\]
+**Flop Ratio** = (Number of D Flip-Flops) / (Total Number of Cells)
+
 
 ---
 
@@ -157,14 +156,12 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 ![](./images/11.PNG) 
 ![](./images/13.PNG) 
 
-11. **Flop Ratio Calculation**  
+11.  **Flop Ratio Calculation**  
     Now, we calculate the **flop ratio** using the formula:  
-    \[
-    \text{Flop Ratio} = \frac{\text{Number of D Flip-Flops}}{\text{Total Number of Cells}} = \frac{1613}{14876} \approx 0.1088
-    \]
+    **Flop Ratio** = (Number of D Flip-Flops) / (Total Number of Cells) = 1613 / 14876 ≈ 0.1088  
     Next, to find the **percentage of D Flip-Flops**, we multiply the result by 100:  
-    \[
-    \text{Percentage of D Flip-Flops} \approx 0.1088 \times 100 = 10.88\%
-    \]
+    **Percentage of D Flip-Flops** ≈ 0.1088 × 100 = 10.88%  
+    ```markdown
 
+    ```
 ---
