@@ -117,45 +117,45 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 ### Lab Process Steps
 
 1. **Initial State of Terminal**  
-![](./images/1.png)
+![](./images/1.PNG)
    In this image, we see the initial state of the terminal where we will access the **OpenLane** directory and begin the process.
 
 2. **Entering the OpenLane Directory** 
-![](./images/2.png) 
+![](./images/2.PNG) 
    Here, we have navigated to the **OpenLane** directory, where we will start working with the design flow.
 
 3. **Invoking OpenLane Flow with Docker**  
-![](./images/3.png)
+![](./images/3.PNG)
    At this step, we invoke the **OpenLane** flow using the **Docker** command to set up the required environment for synthesis.
 
 4. **Dealing with the `flow.tcl` File in Interactive Mode**  
-![](./images/4.png)
+![](./images/4.PNG)
    Inside the OpenLane flow, we work with the **flow.tcl** file to process the design in **interactive mode**. Here, we also bring in the necessary packages to ensure proper functionality.
 
 5. **Preparing the Initial Design from PicoRV32A Directory**  
-![](./images/5.png)
+![](./images/5.PNG)
    In this image, we prep the initial design by navigating to the **PicoRV32A** design directory, where we will work on synthesis.
 
 6. **Preparation Complete, Running `run_synthesis` Command** 
-![](./images/6.png) 
+![](./images/6.PNG) 
    Here, the preparation is complete, and we run the **`run_synthesis`** command to initiate the synthesis step.
 
 7. **Synthesis Complete, Analyzing Results**  
-![](./images/7.png) 
+![](./images/7.PNG) 
    The synthesis step has completed, and we are now ready to examine the results, including calculating the **flop ratio**.
 
 8. **Total Number of Cells: 14,876** 
-![](./images/8.png)  
+![](./images/8.PNG)  
    The total number of cells in the design is **14,876**.
 
 9. **Total Number of D Flip-Flops: 1,613**  
-![](./images/9.png) 
+![](./images/9.PNG) 
    The total number of D Flip-Flops in the design is **1,613**.
 
 10. **Viewing Flop Ratio Statistics**  
-![](./images/10.png) 
-![](./images/11.png) 
-![](./images/13.png) 
+![](./images/10.PNG) 
+![](./images/11.PNG) 
+![](./images/13.PNG) 
 
 11. **Flop Ratio Calculation**  
     Now, we calculate the **flop ratio** using the formula:  
