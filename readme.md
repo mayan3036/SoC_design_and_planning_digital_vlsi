@@ -154,7 +154,7 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 10. **Viewing Flop Ratio Statistics**  
 ![](./images/10.PNG) 
 ![](./images/11.PNG) 
-![](./images/13.PNG) 
+![](./images/12.PNG) 
 
 11.  **Flop Ratio Calculation**  
     Now, we calculate the **flop ratio** using the formula:  
