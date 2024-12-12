@@ -157,11 +157,14 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 ![](./images/13.PNG) 
 
 11.  **Flop Ratio Calculation**  
-    Now, we calculate the **flop ratio** using the formula:  
-    Flop Ratio = (Number of D Flip-Flops) / (Total Number of Cells)  
-    Substituting the values:  
-    Flop Ratio = 1613 / 14876 ≈ 0.1088  
+ Now, we calculate the **Flop Ratio** using the formula:  
+    **Flop Ratio = (Number of D Flip-Flops) / (Total Number of Cells)**  
 
-    Next, to find the **percentage of D Flip-Flops**, we multiply the result by 100:  
-    Percentage of D Flip-Flops = 0.1088 × 100 = 10.88%
+    Substituting the values:  
+    **Flop Ratio = 1613 / 14876 ≈ 0.1088**  
+
+    To express this as a percentage, we multiply the result by 100:  
+    **Percentage of D Flip-Flops = 0.1088 × 100 = 10.88%**
+
+    Therefore, the percentage of D Flip-Flops in the design is approximately **10.88%**.
 ---
