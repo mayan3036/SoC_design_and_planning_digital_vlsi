@@ -152,7 +152,6 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 ![](./images/9.png) 
    The total number of D Flip-Flops in the design is **1,613**.
 
-
 10. **Viewing Flop Ratio Statistics**  
 ![](./images/10.png) 
 ![](./images/11.png) 
