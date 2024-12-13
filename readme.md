@@ -312,12 +312,12 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
 
    ![](./images/25.PNG)
    ![](./images/26.PNG)
-   ![](./images/27.5.PNG)
+   ![](./images/27.PNG)
 
 7. **Use Magic Tool for Placement Visualization**
    - Open Magic to view placement results graphically.
 
-   ![](./images/27.PNG)
+   ![](./images/27.5.PNG)
 
 8. **Placement Results**
    - **Placement Results in Magic:**
