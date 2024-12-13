@@ -298,10 +298,10 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
    - **Floorplan DEF in Magic:**
      ![](./images/19.PNG)
    - **Port Layers:**
-     ![](./images/20.PNG)
      ![](./images/21.PNG)
-   - **Equidistant Ports:**
      ![](./images/22.PNG)
+   - **Equidistant Ports:**
+     ![](./images/20.PNG)
    - **Decap Cells and Tap Cells:**
      ![](./images/23.PNG)
    - **Unplaced Standard Cells:**
