@@ -164,3 +164,163 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
     Next, to find the **percentage of D Flip-Flops**, we multiply the result by 100:  
     Percentage of D Flip-Flops = 0.1088 × 100 = **10.88%**
 ---
+</details>
+
+## Day 2: Floorplanning, Placement, and Library Cells
+
+<details>
+  <summary><strong>Day 2 Theory</strong></summary>
+
+### Floorplanning
+
+**Floorplanning** is the step in the physical design process where the layout of the chip is determined, including the dimensions, placement of macros, standard cells, and power planning. It sets the foundation for efficient placement and routing.
+
+#### Steps of Floorplanning
+
+1. **Define Width and Height of Core and Die:**
+   - Establish the dimensions of the core and die to accommodate all components.
+
+2. **Define Locations of Pre-Placed Cells:**
+   - Place large macros and cells that are fixed due to design constraints.
+
+3. **Use of Decoupling Capacitors:**
+   - Place decap cells to manage voltage fluctuations.
+
+4. **Power Planning:**
+   - Create a grid of **VDD** and **VSS** lines to ensure proper power delivery.
+
+5. **Pin Placement:**
+   - Position input/output pins for efficient routing.
+
+6. **Logical Cell Placement Blockage:**
+   - Define areas where standard cells should not be placed to avoid congestion.
+
+---
+
+### Placement and Routing
+
+**Placement** involves assigning precise physical locations to standard cells within the core area, while **routing** connects these cells using metal layers. The placement process ensures optimal performance and minimal congestion.
+
+#### Steps of Placement and Routing
+
+1. **Bind Netlist with Physical Cells:**
+   - Map logical design components to physical cells in the library.
+
+2. **Placement:**
+   - Perform global and detailed placement to ensure optimal positions.
+
+3. **Optimized Placement:**
+   - Refine cell locations to enhance performance and reduce routing complexity.
+
+---
+
+### Standard Cells, Cell Design Flow, and Need for Characterization
+
+During each step of physical design, standard cells like gates, buffers, inverters, and flip-flops are commonly used. A collection of these cells forms the **library**, which is essential for EDA tools to interpret and implement the design. Libraries include cells of varying sizes, functionalities, and threshold voltages.
+
+#### Cell Design Flow
+
+Each standard cell is created using a defined process:
+
+1. **Input:**
+   - **PDKs:** Process Design Kits containing DRC and LVS rules, SPICE models.
+   - **Library Specifications:** User-defined constraints and functionality.
+
+2. **Design Steps:**
+   - **Circuit Design:** Define the electrical behavior.
+   - **Layout Design:** Create the physical representation.
+   - **Characterization:** Evaluate timing, noise, and power.
+
+3. **Output:**
+   - **Circuit Description Language (CDL):** Output of circuit design.
+   - **GDSII, LEF, Extracted SPICE Netlist:** Outputs of layout design.
+   - **Timing, Noise, Power .LIBs:** Outputs of characterization.
+
+#### Characterization Flow
+
+Characterization evaluates the performance of cells in terms of **timing**, **power**, and **noise**. This step often uses tools like **GUNA** to generate accurate metrics for library cells.
+
+</details>
+
+---
+
+<details>
+  <summary><strong>Day 2 Labs</strong></summary>
+
+### Task
+
+1. Running floorplanning step for **PicoRV32A**.
+2. Accessing the die size and calculating its area.
+3. Using Magic tool to view and explore the floorplan.
+4. Running placement step for **PicoRV32A**.
+5. Using Magic tool to view and explore the placement.
+
+---
+
+### Lab Process Steps
+
+1. **Run the `run_floorplan` Command**
+   - This step is performed after running the `run_synthesis` command (refer to Day 1 Lab).
+
+   ![](./images/13.PNG)
+   ![](./images/14.PNG)
+   ![](./images/15.PNG)
+
+2. **Access the `picorv32a.floorplan.def` File**
+   - Navigate to the relevant directory as shown below.
+
+   ![](./images/16.PNG)
+
+3. **Calculate Die Area**
+   - Inside the `.def` file, note the die dimensions:
+     - **Die Width = 660685 units**
+     - **Die Height = 671405 units**
+   - Using the formula:
+     
+     \[
+     \text{Die Area (in units)} = \text{Die Width} \times \text{Die Height}
+     \]
+     
+     Convert to microns:
+     \[
+     \text{Die Area (in microns)} = \frac{\text{Die Area (in units)}}{10^6}
+     \]
+
+   - Die Area = **443.555 mm²**.
+
+4. **Use Magic Tool for Floorplan Visualization**
+   - Command to open Magic for graphical exploration.
+
+   ![](./images/17.PNG)
+
+5. **Floorplan Results**
+   - **Floorplan DEF in Magic:**
+     ![](./images/18.PNG)
+   - **Port Layers:**
+     ![](./images/19.PNG)
+     ![](./images/20.PNG)
+   - **Equidistant Ports:**
+     ![](./images/21.PNG)
+   - **Decap Cells and Tap Cells:**
+     ![](./images/22.PNG)
+   - **Unplaced Standard Cells:**
+     ![](./images/23.PNG)
+
+6. **Run the `run_placement` Command**
+   - Command to perform placement step.
+
+   ![](./images/24.PNG)
+   ![](./images/25.PNG)
+   ![](./images/26.PNG)
+
+7. **Use Magic Tool for Placement Visualization**
+   - Open Magic to view placement results graphically.
+
+   ![](./images/27.PNG)
+
+8. **Placement Results**
+   - **Placement Results in Magic:**
+     ![](./images/28.PNG)
+     ![](./images/29.PNG)
+
+</details>
