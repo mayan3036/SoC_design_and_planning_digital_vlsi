@@ -272,6 +272,7 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
    ![](./images/16.PNG)
 
 3. **Calculate Die Area**
+   ![](./images/17.PNG) 
    - Inside the `.def` file, note the die dimensions:
      - **Die Width = 660685 units**
      - **Die Height = 671405 units**
@@ -291,27 +292,27 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
 4. **Use Magic Tool for Floorplan Visualization**
    - Command to open Magic for graphical exploration.
 
-   ![](./images/17.PNG)
+   ![](./images/18.PNG)
 
 5. **Floorplan Results**
    - **Floorplan DEF in Magic:**
-     ![](./images/18.PNG)
-   - **Port Layers:**
      ![](./images/19.PNG)
+   - **Port Layers:**
      ![](./images/20.PNG)
-   - **Equidistant Ports:**
      ![](./images/21.PNG)
-   - **Decap Cells and Tap Cells:**
+   - **Equidistant Ports:**
      ![](./images/22.PNG)
-   - **Unplaced Standard Cells:**
+   - **Decap Cells and Tap Cells:**
      ![](./images/23.PNG)
+   - **Unplaced Standard Cells:**
+     ![](./images/24.PNG)
 
 6. **Run the `run_placement` Command**
    - Command to perform placement step.
 
-   ![](./images/24.PNG)
    ![](./images/25.PNG)
    ![](./images/26.PNG)
+   ![](./images/27.5.PNG)
 
 7. **Use Magic Tool for Placement Visualization**
    - Open Magic to view placement results graphically.
