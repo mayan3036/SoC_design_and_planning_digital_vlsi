@@ -278,16 +278,16 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
      - **Die Height = 671405 units**
    - Using the formula:
      
-     \[
-     \text{Die Area (in units)} = \text{Die Width} \times \text{Die Height}
-     \]
+     
+     Die Area (in unit square) = Die Width * Die Height
+     
      
      Convert to microns:
-     \[
-     \text{Die Area (in microns)} = \frac{\text{Die Area (in units)}}{10^6}
-     \]
+     
+   Die Area (in microns square) = Die Area (in unit square)/10^6
+     
 
-   - Die Area = **443.555 mm²**.
+   - Die Area = **443587.21 micron²**.
 
 4. **Use Magic Tool for Floorplan Visualization**
    - Command to open Magic for graphical exploration.
