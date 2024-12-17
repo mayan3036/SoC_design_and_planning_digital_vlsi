@@ -389,14 +389,14 @@ In this task, you will:
 
 ![](./images/31.PNG)  
 
-2. Copy `sky130A.tech` file: 
-    cp ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech
-~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+2. Copy `sky130A.tech` file:
+   from ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/ to
+~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/
 
 ![](./images/32.PNG)  
 
 3. Open the inverter design in Magic using the following command:  
-magic -T sky130A.tech inverter.mag
+magic -T sky130A.tech inverter.mag &
 ![](./images/33.PNG)  
 
 4. Explore the inverter design as follows:  
@@ -429,14 +429,14 @@ magic -T sky130A.tech inverter.mag
 
 ## Task 3: Modify SPICE Deck and Perform Post-Layout Simulations  
 
-1. Open the `.spice` file, explore it,change the model parameters and values as shown in the last image.Also note that the minimum cell dimension is `0.010u` so change it also      
+1. Open the `.spice` file, explore it, change the model parameters and values as shown in the last image. Also note that the minimum cell dimension is `0.010u` so change it also      
 ![](./images/43.PNG)
 ![](./images/45.PNG)  
 resultant final spice deck(.spice) file is :
 ![](./images/47.PNG)
 
 2. Run NGSpice simulation and plot y (output) vs time along with input a.
-![]()./images/48.PNG)
+![](./images/48.PNG)
 ![](./images/49.PNG)
 4. Calculate the following values:  
 
@@ -445,6 +445,7 @@ resultant final spice deck(.spice) file is :
   Rise Transition Time = Time taken by output to reach 80% of its peak value - Time taken by output to reach 20% of its peak value
   ```  
   20% = `0.66 V`, 80% = `2.64 V`
+
   20 %
   ![](./images/50.PNG)
   80 %
@@ -457,7 +458,7 @@ resultant final spice deck(.spice) file is :
 
 - **Fall Transition Time**:  
   ```
-  Fall Transition Time = Time taken by output to fall to 80% of its peak value - Time taken by output to fall to 20% of its peak value
+  Fall Transition Time = Time taken by output to fall to 20% of its peak value - Time taken by output to fall to 80% of its peak value
   ```  
   80 %
   ![](./images/54.PNG)
@@ -465,7 +466,7 @@ resultant final spice deck(.spice) file is :
   ![](./images/56.PNG)
 
   coordinates
-  ![]./images/(57.PNG)
+  ![](./images/57.PNG)
   Fall Transition Time = `(4.095 - 4.052) ns = 0.043 ns`  
 
 - **Rise Cell Delay**:  
