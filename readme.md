@@ -143,11 +143,11 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 ![](./images/7.PNG) 
    The synthesis step has completed, and we are now ready to examine the results, including calculating the **flop ratio**.
 
-8. **Total Number of Cells: 14,876** 
+8. **Total Number of Cells** 
 ![](./images/8.PNG)  
    The total number of cells in the design is **14,876**.
 
-9. **Total Number of D Flip-Flops: 1,613**  
+9. **Total Number of D Flip-Flops**  
 ![](./images/9.PNG) 
    The total number of D Flip-Flops in the design is **1,613**.
 
@@ -161,10 +161,9 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
     ```
     Flop Ratio = (Number of D Flip-Flops) / (Total Number of Cells)  
     ```
-    Substituting the values:  
-    Flop Ratio = `1613 / 14876 ≈ 0.1088`
+    
+    Substituting the values:  Flop Ratio = `1613 / 14876 ≈ 0.1088`
 
-    Next, to find the **percentage of D Flip-Flops**, we multiply the result by 100:  
     Percentage of D Flip-Flops = `0.1088 × 100 = 10.88%`
 ---
 </details>
@@ -329,6 +328,8 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
      ![](./images/29.PNG)
 
 </details>
+
+## Day 3: Design Library Cells Using Magic Layout and NGSpice Characterization
 
 <details>
   <summary><strong>Day 3 Theory</strong></summary>
