@@ -1,6 +1,6 @@
 # SoC Design and Planning
 
-## Day 1: Synthesis for PicoRV32A Design
+## Day 1: Inception of open-source EDA, OpenLANE and Sky130 PDK
 
 <details>
   <summary><strong>Day 1 Theory</strong></summary>
@@ -168,7 +168,7 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 ---
 </details>
 
-## Day 2: Floorplanning, Placement, and Library Cells
+## Day 2: Good floorplan vs bad floorplan and introduction to library cells
 
 <details>
   <summary><strong>Day 2 Theory</strong></summary>
