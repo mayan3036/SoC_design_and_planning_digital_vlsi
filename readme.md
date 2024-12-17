@@ -325,3 +325,229 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
      ![](./images/29.PNG)
 
 </details>
+
+# SoC Design and Planning
+
+
+<details>
+  <summary><strong>Day 3 Theory</strong></summary>
+
+### Standard CMOS Inverter
+
+In this section, we learn about the **standard CMOS inverter** and its SPICE deck to acquire its **Vout vs Vin** characteristics. The basic CMOS inverter consists of a PMOS transistor connected to a VDD supply and an NMOS transistor connected to VSS. The input signal is applied to the gate of both transistors, and the output is taken from the connection between the PMOS and NMOS. The key characteristics of a CMOS inverter are its low power consumption, high noise margins, and ability to drive large currents.  
+
+When analyzing the inverter in SPICE, we can observe its output voltage (Vout) as a function of the input voltage (Vin). The transition from low to high output voltage corresponds to the switching behavior of the inverter.
+
+**Practical Implementation:**  
+For our implementation, we select the **W/L ratio of the PMOS transistor** to be slightly greater than that of the NMOS transistor. This ensures proper voltage levels at the output.
+
+### Static and Dynamic Characterization of CMOS
+
+- **Static Characterization:**  
+  Key parameters such as **input high voltage (Vih)**, **input low voltage (Vil)**, **output high voltage (Voh)**, **output low voltage (Vol)**, **switching threshold voltage (Vth)**, and **noise margins** help in static characterization.
+
+- **Dynamic Characterization:**  
+  Parameters such as **propagation delay**, **rise time**, and **fall time** are used to evaluate dynamic behavior.
+
+### 16-Mask CMOS Fabrication Process
+
+The steps in the **16-mask CMOS fabrication process** are as follows:
+
+1. **Selecting a substrate:** We select a **p-Si** substrate.
+2. **Creating active regions for transistors.**
+3. **Formation of N-well and P-well.**
+4. **Formation of the gate.**
+5. **Formation of lightly doped drain (LDD):** This helps avoid hot electron effects and short channel effects.
+6. **Source and drain formation.**
+7. **Formation of contacts and local interconnects.**
+8. **Higher-level metal formation.**  
+   ![](16_mask_cmos_output.png)
+
+### Use of LEF Files in VLSI Industry
+
+**LEF (Library Exchange Format)** files are widely used in the VLSI industry to describe the physical layout of standard cells, including their geometries, pin locations, and other properties. LEF files provide a crucial interface between the design and manufacturing processes.
+
+</details>
+
+---
+
+<details>
+  <summary><strong>Day 3 Labs</strong></summary>
+
+### Task: SPICE Characterization and Magic Layout Tool for CMOS Inverter
+In this task, you will:
+1. Use **NGSpice** to simulate the CMOS inverter's behavior, including **Vout vs Vin**.
+2. Use the **Magic Layout Tool** to view and analyze the layout of the CMOS inverter.
+
+--- 
+
+### Lab Process Steps
+
+1. Clone the git repository from the provided URL:
+   ```bash
+   git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+![](31.PNG)  
+
+2. Copy `sky130A.tech` file: 
+    cp ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech
+~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+![](32.PNG)  
+
+3. Open the inverter design in Magic using the following command:  
+magic -T sky130A.tech inverter.mag
+![](33.PNG)  
+
+4. Explore the inverter design as follows:  
+- Upper region is PMOS.  
+- Lower region is NMOS.  
+- Y is the output.  
+- A is the input.  
+- VSS connectivity is with VGND.  
+- VDD connectivity is with VPWR.  
+
+![](34.PNG)  
+![](35.PNG)  
+![](36.PNG)  
+![](37.PNG)  
+![](38.PNG)  
+![](39.PNG)  
+
+---
+
+## Task 2: Perform SPICE Extraction of the Inverter  
+
+1. Extract the inverter cell in Magic.  
+![](40.PNG)  
+![](41.PNG)  
+
+2. Check if the `.spice` file is created at the required location.  
+![](42.PNG)  
+
+---
+
+## Task 3: Modify SPICE Deck and Perform Post-Layout Simulations  
+
+1. Open the `.spice` file, explore it,change the model parameters and values as shown in the last image.Also note that the minimum cell dimension is `0.010u` so change it also      
+![](43.PNG)
+![](45.PNG)  
+resultant final spice deck(.spice) file is :
+![](47.PNG)
+
+2. Run NGSpice simulation and plot y (output) vs time along with input a.
+![](48.PNG)
+![](49.PNG)
+4. Calculate the following values:  
+
+- **Rise Transition Time**:  
+  ```
+  Rise Transition Time = Time taken by output to reach 80% of its peak value - Time taken by output to reach 20% of its peak value
+  ```  
+  20% = `0.66 V`, 80% = `2.64 V`
+  20 %
+  ![](50.PNG)
+  80 %
+  ![](52.PNG)
+
+  coordinates
+  ![](53.PNG)
+
+  Rise Transition Time = `(2.246 - 2.182) ns = 0.046 ns`  
+
+- **Fall Transition Time**:  
+  ```
+  Fall Transition Time = Time taken by output to fall to 80% of its peak value - Time taken by output to fall to 20% of its peak value
+  ```  
+  80 %
+  ![](54.PNG)
+  20 %
+  ![](56.PNG)
+
+  coordinates
+  ![](57.PNG)
+  Fall Transition Time = `(4.095 - 4.052) ns = 0.043 ns`  
+
+- **Rise Cell Delay**:  
+  ```
+  Rise Cell Delay = Time taken by output to reach 50% of its peak value - Time taken by input to fall to 50% of its peak value
+  ```  
+  50% = `1.65 V`  
+  ![](58.PNG)
+  ![](59.PNG)
+  Rise Cell Delay = `(2.211 - 2.150) ns = 0.061 ns`  
+
+- **Fall Cell Delay**:  
+  ```
+  Fall Cell Delay = Time taken by output to fall to 50% of its peak value - Time taken by input to reach 50% of its peak value
+  ```  
+  ![](60.PNG)
+  ![](61.PNG) 
+  Fall Cell Delay = `(4.077 - 4.049) ns = 0.028 ns`  
+
+---
+
+## Task 4: Fix DRC Rule Violations  
+
+1. Download the lab files, change the directory, and open the Magic tool for graphical exploration.
+![](62.PNG)
+![](63.PNG) 
+
+Open the `.magicrc` file in vim.
+![](64.PNG)
+
+Empty Magic layout along with terminal:
+![](65.PNG) 
+
+2. Go to: [SkyWater PDK Rules](https://www.skywater-pdk.readthedocs.io/en/main/rules/periphery.html#poly).  
+![](66.PNG)
+
+3. Open `poly.mag` in Magic to check for violations under the `poly.9` DRC rule.  
+![](69.PNG)
+![](70.PNG) 
+
+4. Identify the incorrectly implemented designs violating `poly.9` (dimension `< 0.480 um`).
+poly.9 drc rule
+![](71.PNG)
+violated rule in magic which is not considered as drc violation
+![](72.PNG)  
+
+5. Add a new rule for `poly.9` in the `sky130A.tech` file.  
+![](73.PNG)
+![](74.PNG)
+![](75.PNG)
+6. Reload the tech file and perform DRC check to validate the fixes.  
+![](76.PNG)
+7. We can also implement other design to verify poly.9 drc check
+![](77.PNG)
+
+
+### **Fixing the nwell.4 DRC Rule Implementation**  
+
+1. `nwell.4` states:  
+![](78.PNG) 
+
+2. Identify missing violations in Magic.  
+![](79.PNG) 
+
+3. Add a new rule for `nwell.4` in the `sky130A.tech` file.  
+![](80.PNG)
+![](81.PNG) 
+
+4. Reload the tech file and rerun DRC checks.  
+![](82.PNG)  
+
+### **Fixing the difftap.2 DRC Rule Implementation**  
+
+1. `difftap.2` states:  
+![](83.PNG)
+
+2. Identify missing violations in Magic.  
+![](84.PNG)
+
+3. Add a new rule for `difftap.2` in the `sky130A.tech` file.  
+![](85.PNG)  
+
+4. Reload the tech file and rerun DRC checks.  
+![](86.PNG) 
+
