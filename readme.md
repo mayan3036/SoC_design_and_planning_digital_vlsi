@@ -104,7 +104,7 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 <details>
   <summary><strong>Day 1 Labs</strong></summary>
 
-### Task: Synthesis for PicoRV32A Design
+### Task:
 - Perform synthesis for the **PicoRV32A** design.  
 - From the synthesis output, calculate the **Flop Ratio**, which is defined as:  
 
@@ -251,16 +251,14 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
 
 ### Task
 
-1. Running floorplanning step for **PicoRV32A**.
-2. Accessing the die size and calculating its area.
-3. Using Magic tool to view and explore the floorplan.
-4. Running placement step for **PicoRV32A**.
-5. Using Magic tool to view and explore the placement.
+1. Running floorplanning step for **PicoRV32A** and accessing the die size and calculating its area and using Magic tool to view and explore the floorplan.
+2. Running placement step for **PicoRV32A** and using Magic tool to view and explore the placement.
 
 ---
 
 ### Lab Process Steps
 
+### Task 1:
 1. **Run the `run_floorplan` Command**
    - This step is performed after running the `run_synthesis` command (refer to Day 1 Lab).
 
@@ -310,19 +308,21 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
    - **Unplaced Standard Cells:**
      ![](./images/24.PNG)
 
-6. **Run the `run_placement` Command**
+ ### Task 2:
+
+1. **Run the `run_placement` Command**
    - Command to perform placement step.
 
    ![](./images/25.PNG)
    ![](./images/26.PNG)
    ![](./images/27.PNG)
 
-7. **Use Magic Tool for Placement Visualization**
+2. **Use Magic Tool for Placement Visualization**
    - Open Magic to view placement results graphically.
 
    ![](./images/27.5.PNG)
 
-8. **Placement Results**
+3. **Placement Results**
    - **Placement Results in Magic:**
      ![](./images/28.PNG)
      ![](./images/29.PNG)
@@ -376,14 +376,18 @@ The steps in the **16-mask CMOS fabrication process** are as follows:
 <details>
   <summary><strong>Day 3 Labs</strong></summary>
 
-### Task: SPICE Characterization and Magic Layout Tool for CMOS Inverter
-In this task, you will:
-1. Use **NGSpice** to simulate the CMOS inverter's behavior, including **Vout vs Vin**.
-2. Use the **Magic Layout Tool** to view and analyze the layout of the CMOS inverter.
+We will perform the following tasks:
+
+1. Clone the standard inverter cell from the given repository and explore it in Magic.  
+2. Perform SPICE extraction of this inverter.  
+3. Modify the SPICE deck of the inverter and analyze it through post-layout simulations.  
+4. Learn about DRC rules, fix errors in the Magic DRC tech file, and validate the updated designs.
 
 --- 
 
 ### Lab Process Steps
+
+## Task 1: Clone the standard inverter cell from the given repository and explore it in Magic.
 
 1. Clone the git repository from the provided URL:
    ```bash
