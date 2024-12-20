@@ -900,6 +900,7 @@ Delay tables are crucial for power-aware clock tree synthesis.
    ![](./images/181.PNG)  
    ![](./images/182.PNG)  
    ![](./images/183.PNG)
+   
 </details>
 
 ---
