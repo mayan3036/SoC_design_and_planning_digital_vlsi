@@ -954,7 +954,7 @@ TritonRoute is a state-of-the-art routing tool that facilitates both global and 
 2. Perform routing using TritonRoute and then do the parasitic extraction using the SPEF file after the routing.
 3. Do OpenSTA timing analysis after routing with extracted route parasitics.
 
-## Lab Process Steps:
+## Lab Process Steps
 
 ### Task 1:
 1. **Restart Synthesis and Generate PDN**:
