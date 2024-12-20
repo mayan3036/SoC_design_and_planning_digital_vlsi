@@ -566,7 +566,7 @@ violated rule in magic which is not considered as drc violation
 
 ---
 
-## Day 4: Pre-layout timing analysis and importance of good clock tree.
+## Day 4: Pre-layout timing analysis and importance of good clock tree
 
 <details>
   <summary><strong>Day 4 Theory</strong></summary>
@@ -900,4 +900,111 @@ Delay tables are crucial for power-aware clock tree synthesis.
    ![](./images/181.PNG)  
    ![](./images/182.PNG)  
    ![](./images/183.PNG)
+</details>
+
+---
+
+# Day 5: Final steps for RTL 2 GDS using TritonRoute and OpenSTA
+
+<details>
+  <summary><strong>Day 5 Theory</strong></summary>
+
+## Maze Routing - Lee's Algorithm
+Maze routing involves connecting two points, typically a source and a target, while ensuring the best possible path is found. The steps involved in Lee’s algorithm for routing are as follows:
+
+1. **Divide Core into Grid Blocks**: The core is divided into smaller grid blocks for pathfinding.
+2. **Numbering Adjacent Blocks**: Starting from the source block, number each adjacent block as 1, then continue numbering sequentially until the target block is reached.
+3. **Find All Possible Paths**: Trace from the source to the target block, following the numbering (1, 2, 3, ..., T). This step identifies all possible paths.
+4. **Choose the Optimal Path**: Out of the possible paths, choose the one with the least number of zigzags or bends. L-shaped paths are preferred for their simplicity and efficiency.
+
+During routing, pre-placed cells and capacitors act as blocking areas that must be avoided. Connections include pin-to-element, element-to-element, and element-to-pin routing.
+
+## Design Rule Check (DRC)
+Design Rule Check ensures that the layout adheres to manufacturing constraints. Some common DRC checks include:
+
+1. **Wire Width**: Ensures wires meet minimum width specifications.
+2. **Wire Pitch**: Verifies the distance between adjacent wires.
+3. **Wire Spacing**: Ensures adequate spacing between wires to avoid short circuits.
+4. **Via Width**: Checks the size of vias for connectivity.
+5. **Via Spacing**: Ensures proper spacing between vias.
+
+## Global and Detailed Routing with TritonRoute
+TritonRoute is a state-of-the-art routing tool that facilitates both global and detailed routing. It handles various routing tasks while adhering to DRC rules, optimizing paths, and ensuring manufacturability. Below are the slides related to TritonRoute:
+
+![](./images/S0.PNG)
+![](./images/S1.PNG)
+![](./images/S2.PNG)
+![](./images/S3.PNG)
+![](./images/S4.PNG)
+![](./images/S5.PNG)
+![](./images/S6.PNG)
+![](./images/S7.PNG)
+![](./images/S8.PNG)
+![](./images/S9.PNG)
+
+</details>
+
+<details>
+  <summary><strong>Day 5 Lab </strong></summary>
+
+
+## Task:
+1. Perform power distribution network generation and view its layout.
+2. Perform routing using TritonRoute and then do the parasitic extraction using the SPEF file after the routing.
+3. Do OpenSTA timing analysis after routing with extracted route parasitics.
+
+## Lab Process Steps:
+
+### Task 1:
+1. **Restart Synthesis and Generate PDN**:
+   - Start again from synthesis and proceed to power distribution using the command `gen_pdn`.
+   - Below are the steps illustrated:
+
+![](./images/184.PNG)
+![](./images/185.PNG)
+![](./images/186.PNG)
+![](./images/187.PNG)
+![](./images/188.PNG)
+![](./images/189.PNG)
+![](./images/190.PNG)
+
+2. **Load PDN DEF in Magic**:
+   - Use the following steps to load the PDN DEF in Magic:
+
+![](./images/191.PNG)
+![](./images/192.PNG)
+![](./images/193.PNG)
+
+### Task 2:
+1. **Perform Routing**:
+   - Continue from the power distribution to perform routing as shown below:
+
+![](./images/194.PNG)
+![](./images/195.PNG)
+![](./images/196.PNG)
+
+2. **Load Routed DEF in Magic**:
+   - Load the routed DEF file in Magic as follows:
+
+![](./images/197.PNG)
+![](./images/198.PNG)
+![](./images/199.PNG)
+
+3. **Perform SPEF Extraction**:
+   i. Change directory as follows:
+   ```
+   cd Desktop/work/tools/SPEF_EXTRACTOR
+   ```
+   ii. Extract the SPEF file using the following command:
+   ```
+   python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/[your run file name]/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/[your run file name]/results/routing/picorv32a.def
+   ```
+
+### Task 3:
+1. **Perform Timing Analysis**:
+   - Use OpenROAD’s integrated OpenSTA to perform timing analysis. Below are the steps:
+
+![](./images/200.PNG)
+![](./images/201.PNG)
+
 </details>
