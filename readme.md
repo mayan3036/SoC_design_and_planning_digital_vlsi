@@ -376,7 +376,7 @@ The steps in the **16-mask CMOS fabrication process** are as follows:
 <details>
   <summary><strong>Day 3 Labs</strong></summary>
 
-We will perform the following tasks:
+## Tasks:
 
 1. Clone the standard inverter cell from the given repository and explore it in Magic.  
 2. Perform SPICE extraction of this inverter.  
@@ -387,7 +387,7 @@ We will perform the following tasks:
 
 ### Lab Process Steps
 
-## Task 1: Clone the standard inverter cell from the given repository and explore it in Magic.
+## Task 1:
 
 1. Clone the git repository from the provided URL:
    ```bash
@@ -422,7 +422,7 @@ magic -T sky130A.tech inverter.mag &
 
 ---
 
-## Task 2: Perform SPICE Extraction of the Inverter  
+## Task 2: 
 
 1. Extract the inverter cell in Magic.  
 ![](./images/40.PNG)  
@@ -433,7 +433,7 @@ magic -T sky130A.tech inverter.mag &
 
 ---
 
-## Task 3: Modify SPICE Deck and Perform Post-Layout Simulations  
+## Task 3:  
 
 1. Open the `.spice` file, explore it, change the model parameters and values as shown in the last image. Also note that the minimum cell dimension is `0.010u` so change it also      
 ![](./images/43.PNG)
@@ -494,7 +494,7 @@ resultant final spice deck(.spice) file is :
 
 ---
 
-## Task 4: Fix DRC Rule Violations  
+## Task 4:  
 
 1. Download the lab files, change the directory, and open the Magic tool for graphical exploration.
 ![](./images/62.PNG)
@@ -663,7 +663,7 @@ Delay tables are crucial for power-aware clock tree synthesis.
 <details>
   <summary><strong>Day 4 Labs</strong></summary>
 
-We will perform the following tasks:
+ ## Tasks:
 
 1. Verify the guidelines for the custom design to be inserted in the flow, save the finalized layout with a custom name, open it, and generate LEF from the Magic layout.
 2. Copy the new LEF and required library files to the `picorv32a` design's `src` directory and edit the `config.tcl` file to change the library file and add the new LEF file to the flow.
