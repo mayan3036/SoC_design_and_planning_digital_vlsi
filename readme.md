@@ -686,7 +686,7 @@ We will perform the following tasks:
 
 2. Open the custom cell in Magic to verify the guidelines.  
    - First, set grid as tracks of local layer.  
-     ![](./images/89(5).PNG)  
+     ![](./images/89(.5).PNG)  
 
    - Verifying the three guidelines:  
      ![](./images/90.PNG)
