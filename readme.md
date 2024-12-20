@@ -99,7 +99,7 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 
 </details>
 
----
+
 
 <details>
   <summary><strong>Day 1 Labs</strong></summary>
@@ -246,7 +246,7 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
 
 </details>
 
----
+
 
 <details>
   <summary><strong>Day 2 Labs</strong></summary>
@@ -375,7 +375,7 @@ The steps in the **16-mask CMOS fabrication process** are as follows:
 
 </details>
 
----
+
 
 <details>
   <summary><strong>Day 3 Labs</strong></summary>
@@ -664,7 +664,7 @@ Delay tables are crucial for power-aware clock tree synthesis.
   \]
 </details>
 
----
+
 
 <details>
   <summary><strong>Day 4 Labs</strong></summary>
