@@ -657,12 +657,13 @@ Delay tables are crucial for power-aware clock tree synthesis.
   Slack = Data Arrival Time - Data Required Time
   \]
 </details>
+
 ---
+
 <details>
   <summary><strong>Day 4 Labs</strong></summary>
 
 
-### Task List:
 
 1. Verify the guidelines for the custom design to be inserted in the flow, save the finalized layout with a custom name, open it, and generate LEF from the Magic layout.
 2. Copy the new LEF and required library files to the `picorv32a` design's `src` directory and edit the `config.tcl` file to change the library file and add the new LEF file to the flow.
@@ -673,6 +674,9 @@ Delay tables are crucial for power-aware clock tree synthesis.
 7. Replace the old netlist with the new one, and then run floorplan, placement, and CTS.
 8. Perform post-CTS OpenROAD timing analysis, and further repeat it by removing `sky130_fd_sc_hd__clkbuf_1` cell from the clock buffer list variable `CTS_CLK_BUFFER_LIST`.
 
+--- 
+
+### Lab Process Steps
 
 ### Task 1: 
 
