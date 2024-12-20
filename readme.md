@@ -900,7 +900,7 @@ Delay tables are crucial for power-aware clock tree synthesis.
    ![](./images/181.PNG)  
    ![](./images/182.PNG)  
    ![](./images/183.PNG)
-   
+
 </details>
 
 ---
@@ -1009,3 +1009,10 @@ TritonRoute is a state-of-the-art routing tool that facilitates both global and 
 ![](./images/201.PNG)
 
 </details>
+
+---
+
+### Acknowledgements:
+1. [Kunal Ghosh](https://github.com/kunalg122)
+2. [R. Timothy Edwards](https://github.com/RTimothyEdwards)
+3. [Nickson Jose](https://github.com/nickson-jose)
