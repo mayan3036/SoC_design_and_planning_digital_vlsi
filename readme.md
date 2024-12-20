@@ -168,6 +168,8 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 ---
 </details>
 
+---
+
 ## Day 2: Good floorplan vs bad floorplan and introduction to library cells
 
 <details>
@@ -328,6 +330,8 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
      ![](./images/29.PNG)
 
 </details>
+
+---
 
 ## Day 3: Design Library Cells Using Magic Layout and NGSpice Characterization
 
@@ -559,6 +563,8 @@ violated rule in magic which is not considered as drc violation
 ![](./images/86.PNG) 
 
 </details>
+
+---
 
 ## Day 4: Pre-layout timing analysis and importance of good clock tree.
 
