@@ -558,24 +558,7 @@ violated rule in magic which is not considered as drc violation
 4. Reload the tech file and rerun DRC checks.  
 ![](./images/86.PNG) 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</details>
 
 ## Day 4: Pre-layout timing analysis and importance of good clock tree.
 
