@@ -104,7 +104,7 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
 <details>
   <summary><strong>Day 1 Labs</strong></summary>
 
-### Task:
+## Tasks:
 - Perform synthesis for the **PicoRV32A** design.  
 - From the synthesis output, calculate the **Flop Ratio**, which is defined as:  
 
@@ -249,7 +249,7 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
 <details>
   <summary><strong>Day 2 Labs</strong></summary>
 
-### Task
+## Tasks:
 
 1. Running floorplanning step for **PicoRV32A** and accessing the die size and calculating its area and using Magic tool to view and explore the floorplan.
 2. Running placement step for **PicoRV32A** and using Magic tool to view and explore the placement.
