@@ -558,3 +558,353 @@ violated rule in magic which is not considered as drc violation
 4. Reload the tech file and rerun DRC checks.  
 ![](./images/86.PNG) 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Day 3: Pre-layout timing analysis and importance of good clock tree.
+
+<details>
+  <summary><strong>Day 3 Theory</strong></summary>
+  
+## Custom Design Layout Verification
+Before progressing in the flow with the custom design layout, we verify the following conditions:
+
+1. **Pin Alignment:** Input and output pins must lie at the intersection of vertical and horizontal tracks.
+2. **Standard Cell Width:** The width of the standard cell should be an odd multiple of the horizontal track pitch.
+3. **Standard Cell Height:** The height of the standard cell should be an odd multiple of the vertical track pitch.
+
+
+
+## Delay Tables in Power-Aware Clock Tree Synthesis
+Delay tables are crucial for power-aware clock tree synthesis.
+
+### 1. Clock Gating
+- **AND Gate Clock Gating:** Produces a clock-like output when `Enable` is high, using an AND gate with `Clock` and `Enable` as inputs.
+- **OR Gate Clock Gating:** Produces a clock-like output when `Enable` is low, using an OR gate with `Clock` and `Enable` as inputs.
+- **Purpose:** Prevents short-circuit and switching power losses.
+
+### 2. Delay Table
+- Represents the relationship between output loads and input slew for each clock buffer.
+- The size of a buffer, determined by the W/L ratio of PMOS and NMOS transistors, defines its delay table category.
+- **Application:** Guides clock buffer selection and placement.
+
+
+
+## Setup Timing Analysis (Ideal Single Clock)
+- **Setup Timing Condition:**
+  \[
+  Θ < T - S
+  \]
+  where:
+  - \( Θ  \): Combinational delay between launch and capture flops.
+  - \( T \): Clock time for the capture flop after the launch flop.
+  - \( S \): Setup time (flip-flop input \( D \) propagation time to output QM).
+
+- **Clock Jitter:** Temporary variations in clock period due to internal circuitry can cause deviations in clock edges.
+  - **Setup Uncertainty (SU):** To account for jitter, the condition becomes:
+    \[
+    Θ  < T - S - SU
+    \]
+
+
+
+## Clock Tree Routing and Buffering
+
+1. **H-Tree Algorithm:** Ensures the clock signal is optimally routed to minimize skew and efficiently connect the clock to flip-flops.
+
+2. **Clock Buffers:** Reduce RC distortions in the clock network caused by routing wires.
+
+3. **Clock Net Shielding:** Protects critical clock nets from crosstalk-induced glitches or delays by:
+   - Placing wires connected to \( VDD \) or \( GND \) between signal routes to break coupling capacitance.
+   - Applying shielding only to critical nets, such as clock nets.
+
+
+
+## Setup Timing Analysis (Real Clock)
+- With buffers in the clock path, the setup condition becomes:
+  \[
+  Θ  + Δ1 < T + Δ2 - S - SU
+  \]
+  where:
+  - \( Δ1 \): Launch flop delay.
+  - \( Δ2 \): Capture flop delay.
+  - \( |Δ1 - Δ2| \): Clock slew.
+
+- **Slack Calculation:**
+  \[
+  Slack = Data Required Time - Data Arrival Time
+  \]
+  - Slack must be zero or positive.
+
+
+
+## Hold Timing Analysis (Real Clock)
+- **Hold Timing Condition:**
+  - For the same clock edge sent to both launch and capture flops:
+    \[
+    Θ  > H
+    \]
+    where \( H \) is the hold time (determined by the second internal MUX delay of the flip-flop).
+
+- With real clocks, the condition becomes:
+  \[
+  Θ  + Δ1 > H + Δ2 + HU
+  \]
+  where:
+  - \( HU \): Hold uncertainty.
+
+- **Slack Calculation:**
+  \[
+  Slack = Data Arrival Time - Data Required Time
+  \]
+</details>
+---
+<details>
+  <summary><strong>Day 3 Labs</strong></summary>
+
+
+### Task List:
+
+1. Verify the guidelines for the custom design to be inserted in the flow, save the finalized layout with a custom name, open it, and generate LEF from the Magic layout.
+2. Copy the new LEF and required library files to the `picorv32a` design's `src` directory and edit the `config.tcl` file to change the library file and add the new LEF file to the flow.
+3. Run the synthesis with the new custom inverter cell inserted into the OpenLane flow.
+4. Reduce the violations caused by the new custom inverter cell by changing some synthesis parameters.
+5. Run the floorplan and placement and verify if our custom cell is accepted in the PnR flow.
+6. Perform post-synthesis timing analysis using the OpenSTA tool, and make timing ECO fixes to remove all violations and reduce slack.
+7. Replace the old netlist with the new one, and then run floorplan, placement, and CTS.
+8. Perform post-CTS OpenROAD timing analysis, and further repeat it by removing `sky130_fd_sc_hd__clkbuf_1` cell from the clock buffer list variable `CTS_CLK_BUFFER_LIST`.
+
+
+### Task 1: 
+
+1. Open `tracks.info` of `sky130_fd_sc_hd` and check it.  
+   ![](./images/87.PNG)  
+   ![](./images/89.PNG)  
+
+2. Open the custom cell in Magic to verify the guidelines.  
+   - First, set grid as tracks of local layer.  
+   ![](./images/89.5.PNG)  
+
+   - Verifying the three guidelines:  
+     ![](./images/90.PNG)
+     ![](./images/91.PNG)  
+     - (1.38um is odd multiple of .46um)  
+     ![](./images/92.PNG)  
+     - (2.72um is even multiple of .34um)  
+
+3. Save the layout with a custom name.  
+   ![](./images/93.PNG)  
+
+4. Open the layout.  
+   ![](./images/94.PNG) 
+   ![](./images/95.PNG)
+
+5. Generate the LEF file and verify its location.  
+   ![](./images/96.PNG) 
+   ![](./images/97.PNG)
+   -screenshot of the LEF file.
+   ![](./images/98.PNG)
+
+### Task 2:
+
+1. Copy the new LEF and required library files to the `picorv32a` design's `src` directory and verify their location.  
+   ![](./images/99.PNG)  
+   ![](./images/100.PNG)  
+   ![](./images/101.PNG)  
+
+2. Open the `config.tcl` file and edit it as shown to include the new LEF.  
+   ![](./images/102.PNG)  
+   ![](./images/103.PNG)  
+
+### Task 3:
+
+1. Run the synthesis with the new custom inverter cell inserted in the flow.  
+   - The process will remain the same as running synthesis in previous cases, but we will add two additional commands to include the newly added LEF into the OpenLane flow:  
+   ```tcl
+   set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+   add_lefs -src $lefs
+   ```
+  ![](./images/104.PNG)
+  ![](./images/105.PNG)
+  ![](./images/106.PNG)
+  ![](./images/107.PNG)
+  ![](./images/108.PNG)
+
+### Task 4:
+
+1. First, read the `README.md` file to understand the variables that affect the synthesis, which we can use to reduce violations.  
+   ![](./images/109.PNG)
+
+2. Check the chip area and TNS (Total Negative Slack), WNS (Worst Negative Slack) for the synthesis we just completed.  
+   ![](./images/110.PNG)  
+   ![](./images/111.PNG)
+
+3. Repeat the process from the preparation stage and change some synthesis variables before running the synthesis again:  
+   - Change the following variables as shown in the screenshots below:  
+     - `SYNTH_STRATEGY`  
+     - `SYNTH_BUFFERING`  
+     - `SYNTH_SIZING`  
+     - `SYNTH_DRIVING_CELL`  
+   ![](./images/114.PNG)  
+   ![](./images/115.PNG)  
+   ![](./images/112.PNG)  
+   ![](./images/113.PNG)  
+   ![](./images/116.PNG)
+
+4. Check the new chip area, TNS, and WNS for this synthesis.  
+   ![](./images/117.PNG)  
+   ![](./images/118.PNG)
+
+5. Check the `merged.lef` file for the custom inverter cell.  
+   ![](./images/119.PNG)  
+   ![](./images/120.PNG)
+
+### Task 5:
+
+1. Run the floorplan. Since we are getting an error, we use another set of commands:
+   ```tcl
+   init_floorplan
+   place_io
+   tap_decap_or
+   ```
+   ![](./images/121.PNG)
+   ![](./images/122.PNG)
+   ![](./images/123.PNG)
+   ![](./images/124.PNG)
+
+2. Run the placement:  
+   ![](./images/125.PNG)  
+   ![](./images/126.PNG)
+
+
+3. Load the placement DEF in Magic in another terminal.  
+   ![](./images/127.PNG)  
+   ![](./images/128.PNG)  
+   ![](./images/129.PNG) 
+   - We can use the 'expand' command to view internal connectivity layers.
+   ![](./images/130.PNG)  
+   
+
+### Task 6: 
+
+1. We are having 0 wns after the improved timing run, so we will perform timing analysis on the initial run of synthesis, which has lots of violations and no parameters were added to improve timing.  
+   ![](./images/131.PNG)  
+   ![](./images/132.PNG)  
+   ![](./images/133.PNG)
+
+2. Create a new `pre_sta.conf` in the OpenLane directory and edit it as shown.  
+   ![](./images/134.PNG)  
+   ![](./images/135.PNG)  
+
+3. Create a new `my_base.sdc` for STA analysis in the `openlane/designs/picorv32a/src` directory based on the file `openlane/scripts/base.sdc`.  
+   ![](./images/136.PNG)  
+   ![](./images/137.PNG)
+
+4. Run STA in the Open terminal.  
+   ![](./images/138.PNG)  
+   ![](./images/139.PNG)  
+   ![](./images/140.PNG)
+
+
+5. As we can see, more fanout is causing more delay. We can add parameters to reduce fanout and run synthesis again. Here, we change two synthesis variables:  
+   - `SYNTH_SIZING`  
+   - `SYNTH_MAX_FANOUT`  
+   ![](./images/141.PNG)  
+   ![](./images/142.PNG)  
+   ![](./images/143.PNG)  
+   ![](./images/144.PNG)
+
+6. Run STA again.  
+   ![](./images/145.PNG)  
+   ![](./images/146.PNG)  
+   ![](./images/147.PNG)  
+   ![](./images/148.PNG)
+
+7. Make ECO fixes to reduce overall violations:
+   
+   i)
+
+   ![](./images/149.PNG)  
+   ![](./images/150.PNG)
+   ![](./images/151.PNG)
+   ![](./images/153.PNG)
+
+   ii) 
+   
+   ![](./images/154.PNG) 
+   ![](./images/155.PNG)
+   ![](./images/157.PNG)
+   
+   iii) 
+   
+   ![](./images/158.PNG)
+   ![](./images/159.PNG)
+   ![](./images/160.PNG)
+   
+   iv) 
+   
+   ![](./images/161.PNG)
+   ![](./images/162.PNG)
+   ![](./images/163.PNG)
+
+   We used these commands to make the required changes:  
+   ```tcl
+   report_net -connections _11672_
+   help replace_cell
+   replace_cell _14510_ sky130_fd_sc_hd__or3_4
+   report_checks -fields {net cap slew input_pins} -digits 4
+   ```
+8. Verifying if instance `_14506_` is replaced with `sky130_fd_sc_hd__or4_4`:  
+   ![](./images/164.PNG)    
+
+   As we can see, our overall slack reduced from -23.9 ns to -22.27 ns.
+
+### Task 7: 
+
+1. To insert this updated netlist into the PnR flow, we will use `write_verilog` and overwrite the synthesis netlist. But before that, make a copy of the old netlist.  
+   ![](./images/165.PNG)
+
+2. Write the Verilog, exit, and then check if the netlist is overwritten by verifying that instance `_14506_` is replaced with `sky130_fd_sc_hd__or4_4`.  
+   ![](./images/166.PNG)  
+   ![](./images/167.PNG)
+
+3. Since we want to follow up on the earlier 0 violation design, we continue with the clean design for further stages.  
+   ![](./images/168.PNG)  
+   ![](./images/169.PNG)  
+   ![](./images/170.PNG)  
+   ![](./images/171.PNG)  
+   ![](./images/172.PNG)  
+   ![](./images/173.PNG)
+   ![](./images/174.PNG)
+
+
+### Task 8: 
+
+1. Perform the post-CTS timing analysis in OpenROAD and exit.  
+   ![](./images/176.PNG)  
+   ![](./images/177.PNG)  
+   ![](./images/178.PNG)
+
+2. Perform OpenROAD timing analysis after changing `CTS_CLK_BUFFER_LIST`.  
+   ![](./images/179.PNG)  
+   ![](./images/180.PNG)  
+   ![](./images/181.PNG)  
+   ![](./images/182.PNG)  
+   ![](./images/183.PNG)
+</details>
