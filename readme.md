@@ -905,7 +905,7 @@ Delay tables are crucial for power-aware clock tree synthesis.
 
 ---
 
-# Day 5: Final steps for RTL 2 GDS using TritonRoute and OpenSTA
+## Day 5: Final steps for RTL 2 GDS using TritonRoute and OpenSTA
 
 <details>
   <summary><strong>Day 5 Theory</strong></summary>
