@@ -577,10 +577,10 @@ violated rule in magic which is not considered as drc violation
 
 
 
-## Day 3: Pre-layout timing analysis and importance of good clock tree.
+## Day 4: Pre-layout timing analysis and importance of good clock tree.
 
 <details>
-  <summary><strong>Day 3 Theory</strong></summary>
+  <summary><strong>Day 4 Theory</strong></summary>
   
 ## Custom Design Layout Verification
 Before progressing in the flow with the custom design layout, we verify the following conditions:
@@ -676,7 +676,7 @@ Delay tables are crucial for power-aware clock tree synthesis.
 </details>
 ---
 <details>
-  <summary><strong>Day 3 Labs</strong></summary>
+  <summary><strong>Day 4 Labs</strong></summary>
 
 
 ### Task List:
