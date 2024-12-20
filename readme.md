@@ -1013,6 +1013,6 @@ TritonRoute is a state-of-the-art routing tool that facilitates both global and 
 ---
 
 ### Acknowledgements:
-1. [Kunal Ghosh](https://github.com/kunalg122)
+1. [Kunal Ghosh](https://github.com/kunalg123)
 2. [R. Timothy Edwards](https://github.com/RTimothyEdwards)
 3. [Nickson Jose](https://github.com/nickson-jose)
