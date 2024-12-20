@@ -663,7 +663,7 @@ Delay tables are crucial for power-aware clock tree synthesis.
 <details>
   <summary><strong>Day 4 Labs</strong></summary>
 
-
+We will perform the following tasks:
 
 1. Verify the guidelines for the custom design to be inserted in the flow, save the finalized layout with a custom name, open it, and generate LEF from the Magic layout.
 2. Copy the new LEF and required library files to the `picorv32a` design's `src` directory and edit the `config.tcl` file to change the library file and add the new LEF file to the flow.
