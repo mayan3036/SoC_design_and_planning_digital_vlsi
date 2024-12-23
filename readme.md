@@ -576,7 +576,7 @@ Before progressing in the flow with the custom design layout, we verify the foll
 
 1. **Pin Alignment:** Input and output pins must lie at the intersection of vertical and horizontal tracks.
 2. **Standard Cell Width:** The width of the standard cell should be an odd multiple of the horizontal track pitch.
-3. **Standard Cell Height:** The height of the standard cell should be an odd multiple of the vertical track pitch.
+3. **Standard Cell Height:** The height of the standard cell should be an even multiple of the vertical track pitch.
 
 
 
