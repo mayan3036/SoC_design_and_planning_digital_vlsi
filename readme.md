@@ -282,7 +282,7 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
    - Using the formula:
      
      ```
-     Die Area (in unit square) = `Die Width * Die Height
+     Die Area (in unit square) = Die Width * Die Height
      ```
      
      Convert to microns:
@@ -464,7 +464,7 @@ resultant final spice deck(.spice) file is :
   coordinates
   ![](./images/53.PNG)
 
-  Rise Transition Time = `(2.246 - 2.182) ns = 0.046 ns`  
+  Rise Transition Time = `(2.246 - 2.182) ns = 0.064 ns`  
 
 - **Fall Transition Time**:  
   ```
