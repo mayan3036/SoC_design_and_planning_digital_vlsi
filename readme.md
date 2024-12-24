@@ -253,9 +253,9 @@ Characterization evaluates the performance of cells in terms of **timing**, **po
 
 ## Tasks:
 
-1. Running floorplanning step for **PicoRV32A** and accessing the die size and calculating its area and using Magic tool to view and explore the floorplan.
-2. Running placement step for **PicoRV32A** and using Magic tool to view and explore the placement.
+1. Running the floorplanning step for **PicoRV32A**, followed by accessing the die size, calculating its area, and using the Magic tool to view and explore the floorplan.  
 
+2. Running the placement step for **PicoRV32A**, followed by using the Magic tool to view and explore the placement.  
 ---
 
 ### Lab Process Steps
