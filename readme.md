@@ -165,7 +165,7 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
     Substituting the values:  Flop Ratio = 1613 / 14876 ≈ 0.1088
 
     Percentage of D Flip-Flops = 0.1088 × 100 = 10.88%
----
+
 </details>
 
 ---
