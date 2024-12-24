@@ -162,9 +162,9 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
     Flop Ratio = (Number of D Flip-Flops) / (Total Number of Cells)  
     ```
     
-    Substituting the values:  Flop Ratio = 1613 / 14876 ≈ 0.1088
+    Substituting the values:  Flop Ratio = 1613 / 14876 ≈ 0.10842
 
-    Percentage of D Flip-Flops = 0.1088 × 100 = 10.88%
+    Percentage of D Flip-Flops = 0.1088 × 100 = 10.842%
 
 </details>
 
