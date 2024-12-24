@@ -105,8 +105,8 @@ The **package** houses the **die**, which contains the **core**. The **pads** on
   <summary><strong>Day 1 Labs</strong></summary>
 
 ## Tasks:
-- Perform synthesis for the **PicoRV32A** design.  
-- From the synthesis output, calculate the **Flop Ratio**, which is defined as:  
+1. Perform synthesis for the **PicoRV32A** design.  
+2. From the synthesis output, calculate the **Flop Ratio**, which is defined as:  
 
     Flop Ratio = `(Number of D Flip-Flops) / (Total Number of Cells)`
 
