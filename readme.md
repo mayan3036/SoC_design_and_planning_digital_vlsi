@@ -1012,7 +1012,7 @@ TritonRoute is a state-of-the-art routing tool that facilitates both global and 
 
 ---
 
-### Certificate of Completion
+### Certificate of Completion:
 
 ![Certificate](./images/CERTIFICATE.jpg)
 
